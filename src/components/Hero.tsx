@@ -124,7 +124,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          I'm <span className="bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">You Know</span>
+          I'm <span className="bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">Mamadou DIOP</span>
         </motion.h1>
 
         <motion.div 

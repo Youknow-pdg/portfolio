@@ -246,12 +246,13 @@ export default function About() {
               </button>
 
               {/* Modal Content */}
-              <div className="w-full overflow-y-auto max-h-[75vh] rounded-2xl flex justify-center p-4">
+              <div className="w-full overflow-y-auto max-h-[75vh] rounded-2xl flex justify-center items-center p-4">
                 <img 
                   src={cvImage} 
                   alt="Curriculum Vitae" 
                   referrerPolicy="no-referrer"
-                  className="max-w-full h-auto rounded-xl shadow-lg border border-white/5"
+                  className="max-w-full max-h-[70vh] object-contain rounded-xl shadow-lg border border-white/5"
+                  style={{ aspectRatio: 'auto' }}
                 />
               </div>
 
