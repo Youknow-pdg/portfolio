@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { fadeInUp } from '../constants';
+import profileImage from '../assets/images/profile.jpeg';
 
 const roles = ["Développeur d'Applications", "Créateur Graphique", "Monteur Vidéo"];
 
@@ -93,7 +94,7 @@ export default function Hero() {
         >
           <div className="w-full h-full rounded-full overflow-hidden border-2 border-dark-bg bg-dark-card hover:border-brand-neon transition-colors duration-300 relative">
             <img 
-              src="/src/assets/images/profile.jpeg" 
+              src={profileImage} 
               alt="You Know Profile Avatar" 
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
