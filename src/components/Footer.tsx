@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Instagram, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, ArrowUp } from 'lucide-react';
 import { motion } from 'motion/react';
 import brandLogo from '../assets/images/youlogoknow.jpg';
 
@@ -29,10 +29,8 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-8">
             <div className="flex gap-6">
               {[
-                { icon: <Github size={20} />, href: "https://github.com" },
-                { icon: <Linkedin size={20} />, href: "https://linkedin.com" },
-                { icon: <Twitter size={20} />, href: "https://twitter.com" },
-                { icon: <Instagram size={20} />, href: "https://instagram.com" },
+                { icon: <Github size={20} />, href: "https://github.com/Youknow-pdg/portfolio.git" },
+                { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/mamadou-d-b05681367" },
               ].map((social, i) => (
                 <a 
                   key={i}
