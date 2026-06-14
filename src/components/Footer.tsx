@@ -1,6 +1,6 @@
 import { Github, Linkedin, Twitter, Instagram, ArrowUp } from 'lucide-react';
 import { motion } from 'motion/react';
-import portfolioLogo from '../assets/images/portfolio_logo_1780674131127.png';
+import brandLogo from '../assets/images/youlogoknow.jpg';
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <a href="#" className="flex items-center justify-center md:justify-start gap-3 text-2xl font-bold tracking-tighter mb-4">
               <img 
-                src={portfolioLogo} 
+                src={brandLogo} 
                 alt="YOU KNOW Logo" 
                 referrerPolicy="no-referrer"
                 className="w-8 h-8 rounded-lg object-cover border border-white/10"

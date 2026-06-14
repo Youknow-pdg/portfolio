@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
-import portfolioLogo from '../assets/images/portfolio_logo_1780674131127.png';
+import brandLogo from '../assets/images/youlogoknow.jpg';
 
 export default function Navbar({ isDark, toggleTheme }: { isDark: boolean, toggleTheme: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ export default function Navbar({ isDark, toggleTheme }: { isDark: boolean, toggl
           animate={{ opacity: 1, x: 0 }}
         >
           <img 
-            src={portfolioLogo} 
+            src={brandLogo} 
             alt="YOU KNOW Logo" 
             referrerPolicy="no-referrer"
             className="w-9 h-9 rounded-xl object-cover border border-white/10 shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:scale-105 transition-transform"
