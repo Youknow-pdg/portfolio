@@ -10,10 +10,20 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y1 = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -41,7 +51,7 @@ export default function Hero() {
   }, [displayText, isDeleting, roleIndex]);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-32 pb-16">
+    <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-12 md:pb-16 select-none">
       {/* Background Particles Simulation */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {[...Array(20)].map((_, i) => (
@@ -78,8 +88,8 @@ export default function Hero() {
       </div>
 
       <motion.div 
-        className="container mx-auto px-6 z-10 text-center flex flex-col items-center"
-        style={{ y: y1, opacity }}
+        className="container mx-auto px-6 z-10 text-center flex flex-col items-center justify-center w-full"
+        style={{ y: isMobile ? 0 : y1, opacity }}
       >
         {/* Modern 3D Tech Avatar Frame */}
         <motion.div
@@ -90,7 +100,7 @@ export default function Hero() {
             type: "spring",
             bounce: 0.35
           }}
-          className="relative w-36 h-36 md:w-44 md:h-44 mt-8 md:mt-12 mb-8 rounded-full p-1 bg-gradient-to-r from-brand-purple to-brand-blue shadow-[0_0_50px_rgba(139,92,246,0.3)] group cursor-pointer"
+          className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 mt-4 sm:mt-8 md:mt-12 mb-4 sm:mb-8 rounded-full p-1 bg-gradient-to-r from-brand-purple to-brand-blue shadow-[0_0_35px_rgba(139,92,246,0.25)] md:shadow-[0_0_50px_rgba(139,92,246,0.3)] group cursor-pointer"
         >
           <div className="w-full h-full rounded-full overflow-hidden border-2 border-dark-bg bg-dark-card hover:border-brand-neon transition-colors duration-300 relative">
             <img 
@@ -112,14 +122,14 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 text-sm font-medium text-brand-purple"
+          className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass mb-4 sm:mb-6 md:mb-8 text-xs sm:text-sm font-medium text-brand-purple"
         >
-          <Sparkles size={16} />
+          <Sparkles size={14} />
           <span>Disponible pour de nouveaux projets</span>
         </motion.div>
 
         <motion.h1 
-          className="text-6xl md:text-8xl font-extrabold tracking-tight mb-6"
+          className="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tight mb-3 sm:mb-6 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -128,17 +138,17 @@ export default function Hero() {
         </motion.h1>
 
         <motion.div 
-          className="text-2xl md:text-4xl font-medium text-zinc-400 h-12 mb-10"
+          className="text-lg sm:text-2xl md:text-4xl font-medium text-zinc-400 h-8 sm:h-12 mb-6 sm:mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
           {displayText}
-          <span className="inline-block w-1 h-8 ml-1 bg-brand-purple animate-pulse" />
+          <span className="inline-block w-1 h-6 sm:h-8 ml-1 bg-brand-purple animate-pulse" />
         </motion.div>
 
         <motion.p 
-          className="max-w-2xl mx-auto text-zinc-400 text-lg mb-12 sm:px-4"
+          className="max-w-2xl mx-auto text-zinc-300 dark:text-zinc-400 text-sm sm:text-base md:text-lg mb-8 sm:mb-12 px-2 sm:px-4"
           {...fadeInUp}
           transition={{ delay: 0.6 }}
         >
@@ -146,20 +156,20 @@ export default function Hero() {
         </motion.p>
 
         <motion.div 
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full max-w-md sm:max-w-none px-4 sm:px-0"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
           <a 
             href="#projects" 
-            className="w-full sm:w-auto px-10 py-5 bg-brand-purple rounded-full font-bold flex items-center justify-center gap-3 hover:bg-brand-neon hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all hover:scale-105 active:scale-95 group"
+            className="w-full sm:w-auto px-6 sm:px-10 py-3.5 sm:py-5 bg-brand-purple rounded-full font-bold flex items-center justify-center gap-3 hover:bg-brand-neon hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all hover:scale-105 active:scale-95 group text-sm sm:text-base cursor-pointer"
           >
-            Découvrir mon univers <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            Découvrir mon univers <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
           <a 
             href="#contact" 
-            className="w-full sm:w-auto px-10 py-5 glass border-white/20 rounded-full font-bold hover:bg-white/10 transition-all hover:scale-105 active:scale-95 text-center"
+            className="w-full sm:w-auto px-6 sm:px-10 py-3.5 sm:py-5 glass border-white/20 rounded-full font-bold hover:bg-white/10 transition-all hover:scale-105 active:scale-95 text-center text-sm sm:text-base cursor-pointer"
           >
             Lancer un projet
           </a>
@@ -167,7 +177,7 @@ export default function Hero() {
       </motion.div>
 
       <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 hidden md:flex"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
